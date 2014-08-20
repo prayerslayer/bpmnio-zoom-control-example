@@ -1,6 +1,6 @@
 {
-  "name": "tutorial-web",
-  "version": "0.0.0",
+  "name": "bpmnio-zoom-control-example",
+  "version": "0.0.1",
   "main": "app/app.js",
   "license": "MIT",
   "browser": {

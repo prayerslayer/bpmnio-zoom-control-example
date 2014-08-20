@@ -2,6 +2,7 @@ var $ = require( 'jquery' );
 
 function ZoomControls( canvas, eventBus ) {
 
+    // build controls
     var $canvas = $( canvas.getContainer() ),
         $controls = $( '<div></div>' ),
         $zoomOut = $( '<div><span>-</span></div>' ),
@@ -24,12 +25,15 @@ function ZoomControls( canvas, eventBus ) {
     $zoomIn.attr( 'title', 'Zoom in' );
     $zoomFit.attr( 'title', 'Fit to viewport' );
 
+    // set initial zoom level
     canvas.zoom( zlevel, 'auto' );
 
+    // update our zoom level on viewbox change
     eventBus.on( 'canvas.viewbox.changed', function( evt ) {
         zlevel = evt.viewbox.scale;
     });
 
+    // define click handlers for controls
     $zoomFit.on( 'click', function() {
         canvas.zoom( 'fit-viewport' );
     });
@@ -45,6 +49,7 @@ function ZoomControls( canvas, eventBus ) {
     });
 }
 
+// inject necessary dependencies
 ZoomControls.$inject = [ 'canvas', 'eventBus' ];
 
 module.exports = ZoomControls;
